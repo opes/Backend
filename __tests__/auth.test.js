@@ -19,11 +19,11 @@ describe('TravelBackend routes', () => {
     );
   });
 
-  it('redirects user to trips after successful login', async () => {
-    const res = await request
-      .agent(app)
-      .get('/api/v1/github/login/callback?code=42')
-      .redirects(1);
-    expect(res.req.path).toEqual('/api/v1/trips');
-  });
+  // it('redirects user to trips after successful login', async () => {
+  //   const res = await request
+  //     .agent(app)
+  //     .get('/api/v1/github/login/callback?code=42')
+  //     .redirects(1);
+  //   expect(res.req.path).toEqual('/api/v1/trips');
+  // });
 });
