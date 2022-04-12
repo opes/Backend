@@ -3,6 +3,8 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
+jest.mock('../lib/utils/github');
+
 describe('TravelBackend routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -19,11 +21,11 @@ describe('TravelBackend routes', () => {
     );
   });
 
-  // it('redirects user to trips after successful login', async () => {
-  //   const res = await request
-  //     .agent(app)
-  //     .get('/api/v1/github/login/callback?code=42')
-  //     .redirects(1);
-  //   expect(res.req.path).toEqual('/api/v1/trips');
-  // });
+  it.only('redirects user to trips after successful login', async () => {
+    const res = await request
+      .agent(app)
+      .get('/api/v1/github/login/callback?code=42')
+      .redirects(1);
+    expect(res.req.path).toEqual('/api/v1/trips');
+  });
 });

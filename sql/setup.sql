@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS users_trips CASCADE;
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     username TEXT NOT NULL,
-    email TEXT NOT NULL,
+    email TEXT,
     avatar TEXT
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE users_trips (
 );
 
 -- INSERT INTO
--- trips (location, start_date, end_date, users)
+--  trips (location, start_date, end_date, users)
 -- VALUES
 -- ('vegas', '4/29/2022', '5/12/2022', 1),
 -- ('italy', '6/19/2022', '7/20/2022', 2);
