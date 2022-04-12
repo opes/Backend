@@ -24,8 +24,14 @@ CREATE TABLE users_trips (
     trips_id BIGINT REFERENCES trips(id)
 );
 
--- INSERT INTO
---  trips (location, start_date, end_date, users)
--- VALUES
--- ('vegas', '4/29/2022', '5/12/2022', 1),
--- ('italy', '6/19/2022', '7/20/2022', 2);
+INSERT INTO
+users (username, email, avatar)
+VALUES
+('user.user', 'user.test@test.com', 'https://avatars.githubusercontent.com/u/87677895?v=4'),
+('user.user2', 'user.test@test2.com', 'https://avatars.githubusercontent.com/u/68452618?v=4');
+
+INSERT INTO
+ trips (location, start_date, end_date, users)
+VALUES
+('vegas', '4/29/2022', '5/12/2022', 1),
+('italy', '6/19/2022', '7/20/2022', 2);
