@@ -65,4 +65,15 @@ describe('TravelBackend routes', () => {
     const res = await request(app).get(`/api/v1/trips/${trip.id}`);
     expect(res.body).toEqual(trip);
   });
+
+  it('should be able to delete a trip', async () => {
+    const trip = await Trip.insert({
+      location: 'vegas',
+      startDate: '4/29/2022',
+      endDate: '5/12/2022',
+    });
+    const res = await request(app).delete(`/api/v1/trips/${trip.id}`);
+    expect(res.body).toEqual(trip);
+    expect(await Trip.getById(trip.id)).toBeNull();
+  });
 });
