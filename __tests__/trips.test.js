@@ -2,7 +2,9 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+
 jest.mock('../lib/utils/github');
+
 describe('TravelBackend routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -18,14 +20,12 @@ describe('TravelBackend routes', () => {
         location: 'vegas',
         startDate: '4/29/2022',
         endDate: '5/12/2022',
-        users: expect.any(String),
       },
       {
         id: expect.any(String),
         location: 'italy',
         startDate: '6/19/2022',
         endDate: '7/20/2022',
-        users: expect.any(String),
       },
     ];
 
