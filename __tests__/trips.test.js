@@ -76,4 +76,26 @@ describe('TravelBackend routes', () => {
     expect(res.body).toEqual(trip);
     expect(await Trip.getById(trip.id)).toBeNull();
   });
+
+  it('should update a trip', async () => {
+    const trip = await Trip.insert({
+      location: 'vegas',
+      startDate: '4/29/2022',
+      endDate: '5/12/2022',
+    });
+    const res = await request(app).patch(`/api/v1/trips/${trip.id}`).send({
+      location: 'Bali',
+      startDate: '7/29/2022',
+      endDate: '8/12/2022',
+    });
+
+    const expected = {
+      id: expect.any(String),
+      location: 'Bali',
+      startDate: '7/29/2022',
+      endDate: '8/12/2022',
+    };
+    expect(res.body).toEqual(expected);
+    expect(await Trip.getById(trip.id)).toEqual(expected);
+  });
 });
