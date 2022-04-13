@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Trip = require('../lib/models/Trip');
 
 jest.mock('../lib/utils/github');
 
@@ -53,5 +54,15 @@ describe('TravelBackend routes', () => {
     };
     res = await agent.post('/api/v1/trips').send(trip);
     expect(res.body).toEqual({ id: expect.any(String), ...trip });
+  });
+
+  it('should be able to list a trip by id', async () => {
+    const trip = await Trip.insert({
+      location: 'vegas',
+      startDate: '4/29/2022',
+      endDate: '5/12/2022',
+    });
+    const res = await request(app).get(`/api/v1/trips/${trip.id}`);
+    expect(res.body).toEqual(trip);
   });
 });
