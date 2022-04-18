@@ -47,7 +47,7 @@ CREATE TABLE lodging (
     city TEXT NOT NULL,
     state TEXT NOT NULL,
     zip BIGINT NOT NULL,
-    lodging_id BIGINT REFERENCES trips(id)
+    trip_id BIGINT REFERENCES trips(id)
 );
 
 INSERT INTO
