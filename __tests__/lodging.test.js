@@ -47,7 +47,7 @@ describe('Lodging routes', () => {
       state: 'WA',
       zip: '12345',
     });
-    const res = await request(app).get(`/api/1/lodging${lodging.id}`);
+    const res = await request(app).get(`/api/v1/lodging/${lodging.id}`);
     expect(res.body).toEqual(lodging);
   });
 });
