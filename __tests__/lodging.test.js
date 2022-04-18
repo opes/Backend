@@ -50,4 +50,38 @@ describe('Lodging routes', () => {
     const res = await request(app).get(`/api/v1/lodging/${lodging.id}`);
     expect(res.body).toEqual(lodging);
   });
+
+  it('Shoudl be able to update hotel information', async () => {
+    const lodging = await Lodging.insert({
+      nameOfPlace: 'Test Hotel',
+      contactInfo: 'Test Info',
+      pricePerNight: '100',
+      checkIn: '1/1/2000',
+      checkOut: '1/4/2000',
+      address1: '123 Test Ave',
+      address2: '',
+      city: 'Test City',
+      state: 'WA',
+      zip: '12345',
+    });
+    const res = await request(app).patch(`/api/v1/lodging/${lodging.id}`).send({
+      nameOfPlace: 'Updated Hotel',
+    });
+
+    const expected = {
+      id: expect.any(String),
+      nameOfPlace: 'Updated Hotel',
+      contactInfo: 'Test Info',
+      pricePerNight: '100',
+      checkIn: '1/1/2000',
+      checkOut: '1/4/2000',
+      address1: '123 Test Ave',
+      address2: '',
+      city: 'Test City',
+      state: 'WA',
+      zip: '12345',
+    };
+    expect(res.body).toEqual(expected);
+    expect(await Lodging.getHotelById(lodging.id)).toEqual(expected);
+  });
 });
