@@ -57,6 +57,7 @@ CREATE TABLE lodging (
     state TEXT NOT NULL,
     zip BIGINT NOT NULL,
     trips_id BIGINT REFERENCES trips(id)
+
 );
 
 INSERT INTO
