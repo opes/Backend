@@ -2,7 +2,10 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS trips CASCADE;
+<<<<<<< HEAD
 DROP TABLE IF EXISTS guests_trips CASCADE;
+=======
+>>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
 DROP TABLE IF EXISTS flights CASCADE;
 DROP TABLE IF EXISTS trips_flights CASCADE;
 DROP TABLE IF EXISTS lodging CASCADE;
@@ -30,10 +33,24 @@ CREATE TABLE trips (
     users_id BIGINT REFERENCES users(id)
 );
 
+<<<<<<< HEAD
 CREATE TABLE guests_trips (
     guests_id BIGINT REFERENCES guests(id),
+=======
+CREATE TABLE guests (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT,
+    phone_number TEXT NOT NULL,
+    emergency_contact TEXT NOT NULL,
+>>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
     trips_id BIGINT REFERENCES trips(id)
 );
+
+-- CREATE TABLE guests_trips (
+--     guests_id BIGINT REFERENCES guests(id),
+--     trips_id BIGINT REFERENCES trips(id)
+-- );
 
 CREATE TABLE flights (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -68,8 +85,8 @@ VALUES
 INSERT INTO
  trips (location, start_date, end_date, users_id)
 VALUES
-('vegas', '4/29/2022', '5/12/2022'),
-('italy', '6/19/2022', '7/20/2022');
+('vegas', '4/29/2022', '5/12/2022', 1),
+('italy', '6/19/2022', '7/20/2022', 2);
 
 INSERT INTO
 flights (airline, departure, arrival, flight_number, trips_id)
@@ -78,10 +95,15 @@ VALUES
 ('Spirit', '5:30', '1:00', 'cb234', 2);
 
 INSERT INTO
+<<<<<<< HEAD
 guests (name, email, emergency_contact)
 VALUES('chad', 'chadsemail@chad.com', '713-555-5555');
 
 INSERT INTO
 guests_trips (guests_id, trips_id)
+=======
+guests (name, email, phone_number, emergency_contact, trips_id)
+>>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
 VALUES
-(1, 1);
+('chad', 'chadsemail@chad.com', '111-111-1111', '713-555-5555', 1),
+('tyler', 'tyler@email.com', '222-222-2222', '555-555-5555', 2);
