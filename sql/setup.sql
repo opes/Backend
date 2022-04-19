@@ -2,10 +2,6 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS trips CASCADE;
-<<<<<<< HEAD
-DROP TABLE IF EXISTS guests_trips CASCADE;
-=======
->>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
 DROP TABLE IF EXISTS flights CASCADE;
 DROP TABLE IF EXISTS trips_flights CASCADE;
 DROP TABLE IF EXISTS lodging CASCADE;
@@ -33,17 +29,12 @@ CREATE TABLE trips (
     users_id BIGINT REFERENCES users(id)
 );
 
-<<<<<<< HEAD
-CREATE TABLE guests_trips (
-    guests_id BIGINT REFERENCES guests(id),
-=======
 CREATE TABLE guests (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT,
     phone_number TEXT NOT NULL,
     emergency_contact TEXT NOT NULL,
->>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
     trips_id BIGINT REFERENCES trips(id)
 );
 
@@ -74,6 +65,7 @@ CREATE TABLE lodging (
     state TEXT NOT NULL,
     zip BIGINT NOT NULL,
     trips_id BIGINT REFERENCES trips(id)
+
 );
 
 INSERT INTO
@@ -95,15 +87,7 @@ VALUES
 ('Spirit', '5:30', '1:00', 'cb234', 2);
 
 INSERT INTO
-<<<<<<< HEAD
-guests (name, email, emergency_contact)
-VALUES('chad', 'chadsemail@chad.com', '713-555-5555');
-
-INSERT INTO
-guests_trips (guests_id, trips_id)
-=======
 guests (name, email, phone_number, emergency_contact, trips_id)
->>>>>>> eb5909f13a92b4506d0262986f28cc65aa2f03f6
 VALUES
 ('chad', 'chadsemail@chad.com', '111-111-1111', '713-555-5555', 1),
 ('tyler', 'tyler@email.com', '222-222-2222', '555-555-5555', 2);
