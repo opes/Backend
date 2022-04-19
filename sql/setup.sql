@@ -57,6 +57,7 @@ CREATE TABLE lodging (
     state TEXT NOT NULL,
     zip BIGINT NOT NULL,
     trips_id BIGINT REFERENCES trips(id)
+
 );
 
 INSERT INTO
@@ -68,8 +69,8 @@ VALUES
 INSERT INTO
  trips (location, start_date, end_date, users_id)
 VALUES
-('vegas', '4/29/2022', '5/12/2022'),
-('italy', '6/19/2022', '7/20/2022');
+('vegas', '4/29/2022', '5/12/2022', 1),
+('italy', '6/19/2022', '7/20/2022', 2);
 
 INSERT INTO
 flights (airline, departure, arrival, flight_number, trips_id)
@@ -85,3 +86,5 @@ INSERT INTO
 guests_trips (guests_id, trips_id)
 VALUES
 (1, 1);
+
+-- delete
