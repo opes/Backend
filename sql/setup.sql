@@ -86,3 +86,5 @@ INSERT INTO
 guests_trips (guests_id, trips_id)
 VALUES
 (1, 1);
+
+-- delete
