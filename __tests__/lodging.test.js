@@ -34,6 +34,7 @@ describe('Lodging routes', () => {
   });
 
   it('should list a hotel by ID', async () => {
+
     const lodging = await Lodging.insert({
       id: expect.any(String),
       nameOfPlace: 'Test Hotel',
@@ -52,6 +53,7 @@ describe('Lodging routes', () => {
   });
 
   it('Should be able to update hotel information', async () => {
+
     const lodging = await Lodging.insert({
       nameOfPlace: 'Test Hotel',
       contactInfo: 'Test Info',
