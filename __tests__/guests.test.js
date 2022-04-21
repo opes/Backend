@@ -75,4 +75,17 @@ describe('TravelBackend routes', () => {
     expect(res.body).toEqual(expected);
     expect(await Guest.getById(guest.id)).toEqual(expected);
   });
+
+  it('should be able to delete a guest', async () => {
+    const guest = await Guest.insert({
+      name: 'brett',
+      email: 'brettsemail@brett.com',
+      phoneNumber: '444-444-4444',
+      emergencyContact: '000-000-0000',
+      tripsId: '1',
+    });
+    const res = await request(app).delete(`/api/v1/guests/${guest.id}`);
+    expect(res.body).toEqual(guest);
+    expect(await Guest.getById(guest.id)).toBeNull();
+  });
 });
