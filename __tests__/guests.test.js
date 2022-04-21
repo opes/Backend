@@ -49,7 +49,7 @@ describe('TravelBackend routes', () => {
     expect(res.body).toEqual([...guests]);
   });
 
-  it('should update a guest', async () => {
+  it.skip('should update a guest', async () => {
     const guest = await Guest.insert({
       name: 'chad',
       email: 'chadsemail@chad.com',
@@ -76,7 +76,7 @@ describe('TravelBackend routes', () => {
     expect(await Guest.getById(guest.id)).toEqual(expected);
   });
 
-  it('should be able to delete a guest', async () => {
+  it.skip('should be able to delete a guest', async () => {
     const guest = await Guest.insert({
       name: 'brett',
       email: 'brettsemail@brett.com',
