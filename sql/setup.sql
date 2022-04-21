@@ -22,7 +22,7 @@ CREATE TABLE trips (
 );
 
 CREATE TABLE guests (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    guest_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT,
     phone_number TEXT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE flights (
 );
 
 CREATE TABLE lodging (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    lodging_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name_of_place TEXT NOT NULL,
     contact_info TEXT NOT NULL,
     price_per_night BIGINT NOT NULL,
@@ -63,7 +63,7 @@ VALUES
 ('user.user2', 'user.test@test2.com', 'https://avatars.githubusercontent.com/u/68452618?v=4');
 
 INSERT INTO
- trips (location, start_date, end_date, users_id)
+trips (location, start_date, end_date, users_id)
 VALUES
 ('vegas', '4/29/2022', '5/12/2022', 1),
 ('italy', '6/19/2022', '7/20/2022', 2);
